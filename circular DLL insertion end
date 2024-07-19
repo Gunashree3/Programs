@@ -1,0 +1,57 @@
+import java.util.*;
+public class Insertion
+{
+  Node last;
+  class Node
+  {
+      int data;
+      Node next;
+      Node(int val)
+      {
+          data=val;
+          next=null;
+      }
+  }
+  Insertion()
+  {
+      last=null;
+  }
+  public void insertend(int k)
+  {
+      Node newnode=new Node(k);
+      if(last==null)
+      {
+          newnode.next=newnode;
+          last=newnode;
+      }
+      else
+      {
+          newnode.next=last.next;
+          last.next=newnode;
+          last=newnode;
+      }
+  }
+  public void display()
+  {
+      Node temp=last.next;
+      do
+      {
+          System.out.print(temp.data+" ");
+          temp=temp.next;
+      }
+      while(temp!=last.next);
+}
+public static void main(String[] args)
+{
+    Scanner sc=new Scanner(System.in);
+    Insertion list=new Insertion();
+    int n=sc.nextInt();
+    for(int i=0;i<n;i++)
+    {
+        int val=sc.nextInt();
+        list.insertend(val);
+    }
+    list.display();
+    sc.close();
+}
+}
