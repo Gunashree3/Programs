@@ -1,0 +1,80 @@
+import java.util.*;
+public class stack
+{
+  Node last;
+  class Node
+  {
+      int data;
+      Node next;
+      Node(int val)
+      {
+          data=val;
+          next=null;
+      }
+  }
+  stack()
+  {
+      last=null;
+  }
+  public void push(int k)
+  {
+      Node newnode=new Node(k);
+      if(last==null)
+      {
+          last=newnode;
+      }
+      else
+      {
+          Node temp=last;
+          while(temp.next!=null)
+          {
+              temp=temp.next;
+          }
+          temp.next=newnode;
+      }
+  }
+  public void top()
+  {
+      Node temp=last;
+      while(temp.next!=null)
+      {
+          temp=temp.next;
+      }
+      System.out.println(temp.data+" ");
+  }
+  public void pop()
+  {
+      Node temp=last;
+      Node prev=null;
+      while(temp.next!=null)
+      {
+          prev=temp;
+          temp=temp.next;
+      }
+      prev.next=temp.next;
+  }
+  public void display()
+  {
+      Node temp=last;
+      while(temp!=null)
+      {
+          System.out.print(temp.data+" ");
+          temp=temp.next;
+      }
+}
+public static void main(String[] args)
+{
+    Scanner sc=new Scanner(System.in);
+    stack list=new stack();
+    int n=sc.nextInt();
+    for(int i=0;i<n;i++)
+    {
+        int val=sc.nextInt();
+        list.push(val);
+    }
+    list.top();
+    list.pop();
+    list.display();
+    sc.close();
+}
+}
